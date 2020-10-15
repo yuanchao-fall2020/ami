@@ -38,3 +38,29 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install curl wget zip unzip -y
+
+      - name: Download aws cli
+        run: |
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+      - name: Download packer
+        run: |
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get install packer
+      - name: pakcer validate
+        run: packer validate ami.json
+
+      - name: pakcer build
+        run: |
+          packer build \
+              -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' \
+              -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' \
+              -var 'aws_region=us-east-1' \
+              -var 'subnet_id=${{ secrets.AWS_SUBNET_ID }}' \
+              -var 'ami_users=${{ secrets.AMI_USERS }}' \
+              ami.json
