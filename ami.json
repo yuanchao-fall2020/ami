@@ -37,8 +37,10 @@
           "FOO=foo"
       ],
       "inline": [
+        "sleep 40",
         "sudo apt update",
-        "sudo apt install mysql-server golang -y"
+        "sudo apt install golang -y",
+        "sudo apt install mysql-server -y"
       ]
     }
   ]
