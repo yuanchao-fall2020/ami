@@ -38,7 +38,7 @@
       ],
       "inline": [
         "sudo apt update",
-        "sudo apt install -y golang mysql"
+        "sudo apt install -y golang mysql-server"
       ]
     }
   ]
