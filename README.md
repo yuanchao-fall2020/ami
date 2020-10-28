@@ -1,5 +1,7 @@
 # ami
 
+ass 5 demo
+
 packer validate example.json
 
 packer build \
