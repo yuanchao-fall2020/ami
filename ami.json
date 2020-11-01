@@ -40,7 +40,15 @@
         "sleep 40",
         "sudo apt update",
         "sudo apt install golang -y",
-        "sudo apt install mysql-server -y"
+        "sudo apt install mysql-server -y",
+        "sudo apt-get install ruby",
+        "sudo apt-get install wget",
+        "cd /home/ubuntu",
+        "wget https://codedeploy.martinyuan.me.s3.us-east-1.amazonaws.com/latest/install",
+        "chmod +x ./install",
+        "sudo ./install auto > /tmp/logfile",
+        "sudo ./install auto -v releases/codedeploy-agent-###.deb > /tmp/logfile",
+        "sudo service codedeploy-agent status"
       ]
     }
   ]
