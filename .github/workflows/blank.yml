@@ -18,6 +18,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+
+
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
@@ -36,6 +38,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+
+      - name: remove git-lfs
+        shell: bash
+        run: |
+          cat /etc/apt/sources.list
+          ls /etc/apt/sources.list.d
+          sudo rm /etc/apt/sources.list.d/github_git-lfs.list
+          sudo rm /etc/apt/sources.list.d/github_git-lfs.list.save
 
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install curl wget zip unzip -y
