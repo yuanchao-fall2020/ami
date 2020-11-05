@@ -1,6 +1,6 @@
 # ami
 
-ass 6
+ass 6 1
 
 packer validate example.json
 
