@@ -1,5 +1,7 @@
 # ami
 
+demo
+
 ass 6 1
 
 packer validate example.json
