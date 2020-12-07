@@ -2,7 +2,6 @@
 
 demo
 
-ass 9
 
 packer validate example.json
 
