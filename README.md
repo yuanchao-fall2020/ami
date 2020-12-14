@@ -3,6 +3,7 @@
 demo
 
 
+
 packer validate example.json
 
 packer build \
